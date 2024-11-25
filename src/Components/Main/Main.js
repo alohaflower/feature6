@@ -7,7 +7,6 @@ import { getAllPatterns } from "../../Service/Pattern.js";
 import MainList from "./MainList.js";
 import { checkUser, logoutUser } from "../Auth/AuthService";
 import Star from '@mui/icons-material/Star';
-
   
   const Main = () => {
     const [patterns, setPatterns] = useState([]);

@@ -2,7 +2,6 @@ import {useEffect, useState, React} from "react";
 import { Link, useParams } from "react-router-dom";
 import { getReviews } from "../../Service/Review.js";
 import { getOnePattern } from "../../Service/Pattern.js";
-  
 
 const MainDetail = () => {
     const { id } = useParams();
