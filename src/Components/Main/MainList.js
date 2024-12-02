@@ -14,7 +14,7 @@ const MainList = ({ patterns }) => {
         pattern.animal.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredPatterns(newFilteredPatterns);
-    };
+    }; 
 
     return (
       <div>
@@ -25,8 +25,8 @@ const MainList = ({ patterns }) => {
           options={patterns.map((pattern) => pattern.animal)}
           sx={{ width: 300 }}
           onInputChange={handleInputChange}
-          renderInput={(params) => <TextField {...params} label="Animals" />}
-        />
+          renderInput={(params) => <TextField {...params} label="Animals" />} 
+        />  
         </div>
         <br></br>
         Items for Sale

@@ -12,8 +12,6 @@ export const getReviews = async (id) => {
 
     let queryResults = await query.find();
 
-    //formatting results before returning
-    //in the future, we could have users be allowed to make the reviews
     const formattedResults = queryResults.map((result) => ({
         body_text: result.get("body_text"),
         plushieId: result.get("plushie"),
@@ -21,4 +19,26 @@ export const getReviews = async (id) => {
     }));
 
     return formattedResults;
+};
+
+export const createReview = async ({ bodyText, plushieId, starRating }) => {
+    const Review = Parse.Object.extend("reviews");
+    const Plushie = Parse.Object.extend("plushies");
+    const review = new Review();
+
+    const plushiePointer = new Plushie();
+    plushiePointer.id = plushieId;
+
+    review.set("body_text", bodyText);
+    review.set("plushie", plushiePointer);
+    review.set("star_rating", starRating);
+
+    const result = await review.save();
+
+    return {
+        id: result.id,
+        body_text: result.get("body_text"),
+        plushieId: result.get("plushie").id,
+        star_rating: result.get("star_rating"),
+    };
 };
