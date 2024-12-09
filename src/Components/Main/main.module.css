@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Mukta");
+@import url("https://fonts.googleapis.com/css?family=Fascinate");
+@import url("https://fonts.googleapis.com/css?family=Unlock");
+
+/* Using a separate css sheet for navbar to guarantee consistency 
+across the different pages */
+.MuktaFontBlackOut {
+  font-family: "Mukta";
+  list-style: none;
+  margin: 0;
+  background: black;
+  color: white;
+}
+
+.FascinateFontBlackOut{
+  font-family: "Fascinate";
+  background: black;
+  color: white;
+}
+
+.Navbar_Buttons {
+  color:white;
+}
+
+.PurpleFont{
+  color:purple;
+}
+
+.MuktaFont {
+  font-family: "Mukta"
+}
+
+.UnlockFont {
+  font-family: "Unlock"
+}
+
+.FascinateFont {
+  font-family: "Fascinate";
+}
+
+.AddMargin {
+  margin:10px;
+}
+
+ul {
+  list-style: none;
+}
+
+.ListStyle{
+  display: block;
+  list-style: none;
+}
+
+/* make text black so can still read on white background */
+.ListStyle a:hover {
+  text-decoration: underline;
+  background: purple;
+  color: white;
+}

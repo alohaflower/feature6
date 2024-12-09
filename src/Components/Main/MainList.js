@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import styles from './main.module.css'; 
 
 const MainList = ({ patterns }) => {
     const [filteredPatterns, setFilteredPatterns] = useState(patterns);
@@ -17,8 +18,7 @@ const MainList = ({ patterns }) => {
     }; 
 
     return (
-      <div>
-        <hr />
+      <div className={styles.ListStyle}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Autocomplete
           disablePortal
@@ -26,19 +26,19 @@ const MainList = ({ patterns }) => {
           sx={{ width: 300 }}
           onInputChange={handleInputChange}
           renderInput={(params) => <TextField {...params} label="Animals" />} 
-        />  
-        </div>
+        /> 
         <br></br>
-        Items for Sale
+        </div>
+        {/* <p className={styles.UnlockFont}>Items for Sale</p> */}
         <ul>
         {filteredPatterns.map(
           (pattern) =>
             <li key={pattern.id}>
               <div>
-                <Link to={pattern.id}>{pattern.humanName} the {pattern.animal}</Link>
-                <span> | ${pattern.cost}</span>
-                <span> | {pattern.description} </span>
+                <Link to={pattern.id} className={styles.PurpleFont}>{pattern.humanName} the {pattern.animal}</Link>
+                <span>, ${pattern.cost}</span>
               </div>
+              <span>{pattern.description} </span>
               <div>
                 <img
                   src={require(`../../Images/${pattern.imgName}.jpeg`)}
