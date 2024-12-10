@@ -90,19 +90,20 @@ const MainDetail = () => {
                                         onSubmit={onSubmitHandler}></ReviewForm> : <div></div>}
               </div>
               <br></br>
-            {reviews.map(
-              (review) =>
-                <li key={review.id}>
-                  <div>
-                    <span>{review.username} | </span>
-                    <span> 
-                    <Rating defaultValue={review.star_rating} size="small" readOnly /> </span>
-                    <span> | {review.body_text} </span>
-                  </div>
-                  <br></br>
-                </li>
-            )}
-
+              {/* <hr width="36%" /> */}
+            <div className={styles.MiddleWidthLeft}>
+              {reviews.map(
+                (review) =>
+                  <li key={review.id}>
+                    <div className={styles.MoveLeft}>
+                      <span>{review.username} | </span>
+                      <span> 
+                      <Rating defaultValue={review.star_rating} size="small" readOnly /> </span>
+                      <span> | {review.body_text} </span>
+                    </div>
+                  </li>
+              )}
+            </div>
         </div>
     );
 };

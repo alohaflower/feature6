@@ -15,8 +15,7 @@ const ReviewForm = ({ review, onChange, onSubmit }) => {
             />
         </div>
         <div>
-          <label>Review:</label>
-          <br />
+          <label>Review: </label>
           <input
             type="text"
             value={review.bodyText}

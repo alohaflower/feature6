@@ -22,6 +22,16 @@ across the different pages */
   color:white;
 }
 
+.MiddleWidthLeft {
+  margin: auto;
+  width: 36%;
+}
+
+.MoveLeft{
+  text-align: left;
+  padding: 5px;
+}
+
 .PurpleFont{
   color:purple;
 }
