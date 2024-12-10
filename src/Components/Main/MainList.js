@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+
+
 
 const MainList = ({ patterns }) => {
     const [filteredPatterns, setFilteredPatterns] = useState(patterns);
@@ -16,6 +21,7 @@ const MainList = ({ patterns }) => {
       setFilteredPatterns(newFilteredPatterns);
     }; 
 
+
     return (
       <div>
         <hr />
@@ -28,6 +34,7 @@ const MainList = ({ patterns }) => {
           renderInput={(params) => <TextField {...params} label="Animals" />} 
         />  
         </div>
+        <Button variant="contained">Filter Prices</Button>
         <br></br>
         Items for Sale
         <ul>
