@@ -79,12 +79,7 @@ const MainDetail = () => {
       })
     };
 
-    // Need to add toggle function that controls the filtering process
-    
-
-
     return (
-      // TODO, future work: make it so users can leave their own reviews on plushies!
         <div className={styles.ListStyle + " " + styles.MuktaFont}>
             <div>
                 <Link to="/" classname={styles.PurpleFont}>Back</Link>
@@ -115,7 +110,9 @@ const MainDetail = () => {
               
               {/* User can filter reviews here */}
               <div>
-                <p>Show Reviews For:</p>
+                <br></br>
+                <span className={styles.MiddleWidthLeft}>Show Reviews For:</span>
+                <br></br>
 
                 <ToggleButtonGroup
                   onChange={handleInputChange}
@@ -131,18 +128,20 @@ const MainDetail = () => {
                 </ToggleButtonGroup>
                 
               </div>
-            {newFilteredReviews.map(
-              (review) =>
-                  <li key={review.id}>
-                    <div className={styles.MoveLeft}>
-                      <span>{review.username} | </span>
-                      <span> 
-                      <Rating defaultValue={review.star_rating} size="small" readOnly /> </span>
-                      <span> | {review.body_text} </span>
-                    </div>
-                  </li>
-            )}
-
+              <br></br>
+            <div className={styles.MiddleWidthLeft}>
+              {newFilteredReviews.map(
+                (review) =>
+                    <li key={review.id}>
+                      <div className={styles.MoveLeft}>
+                        <span>{review.username} | </span>
+                        <span> 
+                        <Rating defaultValue={review.star_rating} size="small" readOnly /> </span>
+                        <span> | {review.body_text} </span>
+                      </div>
+                    </li>
+              )}
+            </div>
         </div>
     );
 };

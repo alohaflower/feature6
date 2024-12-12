@@ -21,36 +21,29 @@ const MainList = ({ patterns }) => {
       );
       setFilteredPatterns(newFilteredPatterns);
     };
-    
-    const [prices, setPrices] = useState([]);
 
     const handlePriceChange=(event,value)=> {
       const newFilteredPatterns = patterns.filter((pattern) =>
-        pattern.cost < Number(value.substring(3,5)) && pattern.cost > Number(value.substring(0,2))
+        pattern.cost <= Number(value.substring(3,5)) && pattern.cost >= Number(value.substring(0,2))
       );
       console.log(value)
       console.log(Number(value.substring(0,2)))
       console.log(Number(value.substring(3,5)))
       setFilteredPatterns(newFilteredPatterns);
     }
-    
-
 
     return (
       <div className={styles.ListStyle}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Autocomplete
-          disablePortal
-          options={patterns.map((pattern) => pattern.animal)}
-          sx={{ width: 300 }}
-          onInputChange={handleInputChange}
-          renderInput={(params) => <TextField {...params} label="Animals" />} 
-        />  
+          <Autocomplete
+            disablePortal
+            options={patterns.map((pattern) => pattern.animal)}
+            sx={{ width: 300 }}
+            onInputChange={handleInputChange}
+            renderInput={(params) => <TextField {...params} label="Animals" />} 
+          />  
         </div>
         {/* Filter Prices */}
-
-
-
         <div>
         <p>Filter by Price</p>
         <ToggleButtonGroup
@@ -63,10 +56,8 @@ const MainList = ({ patterns }) => {
             <ToggleButton value="31-40">$31-40</ToggleButton>
             <ToggleButton value="41-50">$41-50</ToggleButton>
         </ToggleButtonGroup>
-        </div>
         <br></br>
         </div>
-        {/* <p className={styles.UnlockFont}>Items for Sale</p> */}
         <ul>
         {filteredPatterns.map(
           (pattern) =>
@@ -85,7 +76,7 @@ const MainList = ({ patterns }) => {
               </div>
             </li>
         )}
-      </ul>
+          </ul>
     </div>
     );
 };
