@@ -1,4 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Mukta");
-@import url("https://fonts.googleapis.com/css?family=Fascinate");
-@import url("https://fonts.googleapis.com/css?family=Unlock");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css?family=Inter");
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
+
+
+.LatoFontHeader{
+    font-family:"Lato";
+    margin:0;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.InterFontBlock{
+    font-family:"Inter";
+    color: white;
+    font-size:16;
+}
+
+.PlaceLeft{
+    text-align: left;
+    padding: 5px;
+  }

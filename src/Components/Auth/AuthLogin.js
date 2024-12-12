@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { checkUser, loginUser } from "./AuthService";
 import AuthForm from "./AuthForm";
 import { useNavigate, Link } from "react-router-dom";
+import styles from './auth.module.css'; 
 
 const AuthLogin = () => {
   const navigate = useNavigate();

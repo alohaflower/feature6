@@ -1,12 +1,15 @@
 import React from "react";
+import styles from './auth.module.css'; 
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} autoComplete="off">
     {!isLogin ? 
-    <div>
-        <div className="form-group">
+    <div className={styles.PlaceLeft}>
+        
+        <div className={styles.LatoFontHeader+" "+styles.PlaceLeft}><p>Sign Up Form</p></div>
+        <div className={"form-group"+styles.PlaceLeft}>
           <label>First Name</label>
           <br />
           <input
@@ -35,7 +38,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
         </div>{" "}
         </div> : <></>}
         <div>
-        <div className="form-group">
+        <div className={"form-group"+" "+styles.PlaceLeft}>
           <label>Email</label>
           <br />
           <input
@@ -48,7 +51,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             required
           />
         </div>{" "}
-        <div className="form-group">
+        <div className={"form-group"+" "+ styles.PlaceLeft}>
           <label>Password</label>
           <br />
           <input
@@ -62,7 +65,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={"form-group"+" "+styles.PlaceLeft}>
           <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
             Submit
           </button>
