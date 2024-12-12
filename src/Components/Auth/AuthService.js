@@ -4,16 +4,16 @@ import Parse from "parse";
 export const createUser = (newUser) => {
   const user = new Parse.User();
 
-  user.set("username", newUser.email);
+  user.set("username", newUser.username);
   user.set("firstName", newUser.firstName);
   user.set("lastName", newUser.lastName);
   user.set("password", newUser.password);
   user.set("email", newUser.email);
 
-  console.log("User: ", user);
   return user
     .signUp()
     .then((newUserSaved) => {
+      createProfile(newUserSaved,newUser.username);
       return newUserSaved;
     })
     .catch((error) => {
@@ -21,15 +21,32 @@ export const createUser = (newUser) => {
     });
 };
 
+export const createProfile = async ( user, username ) => {
+  const Profile = Parse.Object.extend("profile");
+  const profile = new Profile();
+
+  profile.set("user", user);
+  profile.set("username", username);
+
+  const result = await profile.save();
+
+  return {
+      id: result.id,
+      username: username,
+      userId: result.get("user").id
+  };
+};
+
+
 // auth login component
 export const loginUser = (currUser) => {
   const user = new Parse.User();
 
   user.set("password", currUser.password);
-  user.set("username", currUser.email);
+  user.set("username", currUser.username);
 
   return user
-    .logIn(user.email, user.password)
+    .logIn(user.username, user.password)
     .then((currUserSaved) => {
       return currUserSaved;
     })

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-
+import styles from './main.module.css'; 
 
 const MainList = ({ patterns }) => {
     const [filteredPatterns, setFilteredPatterns] = useState(patterns);
@@ -37,8 +37,7 @@ const MainList = ({ patterns }) => {
 
 
     return (
-      <div>
-        <hr />
+      <div className={styles.ListStyle}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Autocomplete
           disablePortal
@@ -66,16 +65,17 @@ const MainList = ({ patterns }) => {
         </ToggleButtonGroup>
         </div>
         <br></br>
-        Items for Sale
+        </div>
+        {/* <p className={styles.UnlockFont}>Items for Sale</p> */}
         <ul>
         {filteredPatterns.map(
           (pattern) =>
             <li key={pattern.id}>
               <div>
-                <Link to={pattern.id}>{pattern.humanName} the {pattern.animal}</Link>
-                <span> | ${pattern.cost}</span>
-                <span> | {pattern.description} </span>
+                <Link to={pattern.id} className={styles.PurpleFont}>{pattern.humanName} the {pattern.animal}</Link>
+                <span>, ${pattern.cost}</span>
               </div>
+              <span>{pattern.description} </span>
               <div>
                 <img
                   src={require(`../../Images/${pattern.imgName}.jpeg`)}

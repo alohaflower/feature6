@@ -2,6 +2,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2024-12-10
+ 
+### Added
+
+- Users can now make reviews
+- Styling added to main component
+- Can now filter plushies by name
+
 ## [0.3.0] - 2024-10-17
  
 ### Added

@@ -7,7 +7,9 @@ import Button from '@mui/material/Button';
 import ReviewForm from "./ReviewForm.js";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-
+import Parse from "parse";
+import styles from './main.module.css'; 
+import Rating from '@mui/material/Rating';
 
 const MainDetail = () => {
     const { id } = useParams();
@@ -28,6 +30,7 @@ const MainDetail = () => {
       bodyText: "",
       plushieId: id || "", 
       starRating: 1,
+      user: Parse.User.current()
     };
 
     const [reviews, setReviews] = useState([]);
@@ -57,19 +60,15 @@ const MainDetail = () => {
       e.preventDefault();
       //console.log(e.target);
       const { name, value: newValue } = e.target;
-      console.log(name, newValue);
   
-      console.log(currentReview);
       setCurrentReview({
         ...currentReview,
         [name]: newValue
       });
-      console.log(currentReview);
     };
 
     const onSubmitHandler = (e) => {
       e.preventDefault();
-      //console.log("submitted: ", e.target);
       currentReview.starRating = Number(currentReview.starRating);
       createReview(currentReview)
       .then(() => {
@@ -86,9 +85,9 @@ const MainDetail = () => {
 
     return (
       // TODO, future work: make it so users can leave their own reviews on plushies!
-        <div>
+        <div className={styles.ListStyle + " " + styles.MuktaFont}>
             <div>
-                <Link to="/">Back</Link>
+                <Link to="/" classname={styles.PurpleFont}>Back</Link>
             </div>
             {patterns.map(
               (pattern) =>
@@ -99,19 +98,21 @@ const MainDetail = () => {
                     height="300"
                   />
                   <div>
-                    <p> REVIEWS FOR: {pattern.humanName} the {pattern.animal} </p>
+                    <p className={styles.UnlockFont}> ⭐ Reviews For {pattern.humanName} the {pattern.animal} ⭐ </p>
                   </div>
+                  <hr width="36%" />
                 </li>
             )}
             <p></p>
-            <Button variant="contained" onClick={reviewCreationToggle}>Add New Review</Button>
-    
+
+            <Button variant="outlined" color="secondary" onClick={reviewCreationToggle}>Add New Review</Button>
               <div>
                 {showReviewCreate ? <ReviewForm 
                                         review={currentReview} 
                                         onChange={onChangeHandler} 
                                         onSubmit={onSubmitHandler}></ReviewForm> : <div></div>}
               </div>
+              
               {/* User can filter reviews here */}
               <div>
                 <p>Show Reviews For:</p>
@@ -132,12 +133,14 @@ const MainDetail = () => {
               </div>
             {newFilteredReviews.map(
               (review) =>
-                <li key={review.id}>
-                  <div>
-                    <span> | {review.star_rating} ⭐</span>
-                    <span> | {review.body_text} </span>
-                  </div>
-                </li>
+                  <li key={review.id}>
+                    <div className={styles.MoveLeft}>
+                      <span>{review.username} | </span>
+                      <span> 
+                      <Rating defaultValue={review.star_rating} size="small" readOnly /> </span>
+                      <span> | {review.body_text} </span>
+                    </div>
+                  </li>
             )}
 
         </div>

@@ -51,7 +51,22 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             required
           />
         </div>{" "}
-        <div className={"form-group"+" "+ styles.PlaceLeft}>
+        </div> : <></>}
+        <div className="form-group"+" "+ styles.PlaceLeft}>
+          <label>Username</label>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            id="username-input"
+            value={user.username}
+            onChange={onChange}
+            name="username"
+            required
+          />
+        </div>{" "}
+        <div>
+        <div className="form-group">
           <label>Password</label>
           <br />
           <input

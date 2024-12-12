@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { getAllPatterns } from "../../Service/Pattern.js";
 import MainList from "./MainList.js";
 import { checkUser, logoutUser } from "../Auth/AuthService";
-import Star from '@mui/icons-material/Star';
+import Star from '@mui/icons-material/AutoAwesomeTwoTone';
+import styles from './main.module.css'; 
+import Button from '@mui/material/Button';
   
   const Main = () => {
     const [patterns, setPatterns] = useState([]);
@@ -28,29 +30,26 @@ import Star from '@mui/icons-material/Star';
     };
   
     return (
-        <div>
-        <Star></Star>
-        <h1>Feature 6</h1>
-        This is the stateful parent component.
-        <hr></hr>
+        <div className={styles.MuktaFont}>
+          <h1 className={styles.FascinateFontBlackOut}>Feature 6</h1>
 
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-        <br />
-        <br />
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <br />
-        <br />
-        <button onClick={onSubmitHandler}>
-          Logout
-        </button>
-
-        <MainList patterns={patterns} />
-      </div>
-    );
+          <div>
+              <Link to="/register">
+                <Button variant="outlined" color="secondary">Register</Button>
+              </Link>
+              <Link to="/login">
+                  <Button variant="outlined" color="secondary" className={styles.AddMargin}>Login</Button>
+              </Link>
+              <Button variant="outlined" color="secondary" onClick={onSubmitHandler}>Logout</Button>
+          </div>
+          <hr></hr>
+          <div className={styles.FascinateFont}>
+            <Star></Star><span className={styles.AddMargin}>FIND WORLD-FAMOUS PLUSHIES HERE!!!</span><Star></Star>
+          </div>
+          <br></br>
+          <MainList patterns={patterns} />
+        </div>
+      );
   };
   
   export default Main;
